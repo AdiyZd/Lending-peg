@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathQue</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--F ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-square-root-alt me-2"></i>MathQue
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-trophy me-1"></i> Peringkat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-cog me-1"></i> Pengaturan</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=Zyun+M&background=random" alt="Avatar"
+                                class="avatar me-1">
+                            Zyun M
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-1"></i> Profil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-1"></i> Keluar</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Game Area -->
+            <div class="col-lg-8 mb-4">
+                <div class="card mathque-card h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <span class="badge level-badge text-white">Level 1</span>
+                            <div class="text-center">
+                                <div class="text-muted small">Skor</div>
+                                <div class="score-display">0</div>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 10px;">
+                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <div class="question-display" id="questionDisplay">
+                                Klik "Mulai" untuk memulai permainan!
+                            </div>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <input type="number" class="input-answer form-control mb-3" id="answerInput"
+                                placeholder="Masukkan jawaban" disabled>
+                            <button class="btn btn-mathque" id="submitBtn" disabled>Kirim Jawaban</button>
+                            <button class="btn btn-success" id="startBtn">Mulai</button>
+                        </div>
+
+                        <div class="alert alert-success d-none" id="correctAlert">
+                            <i class="fas fa-check-circle me-2"></i> Benar! +10 poin
+                        </div>
+                        <div class="alert alert-danger d-none" id="wrongAlert">
+                            <i class="fas fa-times-circle me-2"></i> Salah! Coba lagi
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- c2 -->
+            <div class="col-lg-4">
+                <!-- User Info Card -->
+                <div class="card mathque-card mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://ui-avatars.com/api/?name=Zyun+M&background=random" alt="Avatar"
+                                class="avatar me-3">
+                            <div>
+                                <h5 class="mb-0">Zyun M</h5>
+                                <span class="text-muted small">Pemula</span>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="h5 mb-0">0</div>
+                                <small class="text-muted">Skor</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="h5 mb-0">1</div>
+                                <small class="text-muted">Level</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="h5 mb-0">0</div>
+                                <small class="text-muted">Streak</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Card -->
+                <div class="card mathque-card">
+                    <div class="card-body p-4">
+                        <h5 class="card-title mb-3"><i class="fas fa-trophy me-2 text-warning"></i>Peringkat</h5>
+                        <div class="list-group">
+                            <div class="list-group-item leaderboard-item border-0 d-flex align-items-center">
+                                <span class="badge bg-primary me-2">1</span>
+                                <img src="https://ui-avatars.com/api/?name=Alex+K&background=random" alt="Avatar"
+                                    class="avatar me-2">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Alex K</span>
+                                        <span class="fw-bold">250</span>
+                                    </div>
+                                    <small class="text-muted">Level 5</small>
+                                </div>
+                            </div>
+                            <div class="list-group-item leaderboard-item border-0 d-flex align-items-center">
+                                <span class="badge bg-secondary me-2">2</span>
+                                <img src="https://ui-avatars.com/api/?name=Siti+J&background=random" alt="Avatar"
+                                    class="avatar me-2">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Siti J</span>
+                                        <span class="fw-bold">180</span>
+                                    </div>
+                                    <small class="text-muted">Level 4</small>
+                                </div>
+                            </div>
+                            <div class="list-group-item leaderboard-item border-0 d-flex align-items-center">
+                                <span class="badge bg-danger me-2">3</span>
+                                <img src="https://ui-avatars.com/api/?name=Budi+L&background=random" alt="Avatar"
+                                    class="avatar me-2">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Budi L</span>
+                                        <span class="fw-bold">150</span>
+                                    </div>
+                                    <small class="text-muted">Level 3</small>
+                                </div>
+                            </div>
+                            <div class="list-group-item leaderboard-item border-0 d-flex align-items-center">
+                                <span class="badge bg-transparent text-dark me-2">4</span>
+                                <img src="https://ui-avatars.com/api/?name=Dewi+M&background=random" alt="Avatar"
+                                    class="avatar me-2">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Dewi M</span>
+                                        <span class="fw-bold">120</span>
+                                    </div>
+                                    <small class="text-muted">Level 3</small>
+                                </div>
+                            </div>
+                            <div class="list-group-item leaderboard-item border-0 d-flex align-items-center">
+                                <span class="badge bg-transparent text-dark me-2">5</span>
+                                <img src="https://ui-avatars.com/api/?name=Rudi+P&background=random" alt="Avatar"
+                                    class="avatar me-2">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Rudi P</span>
+                                        <span class="fw-bold">90</span>
+                                    </div>
+                                    <small class="text-muted">Level 2</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="assets/js/str.js"></script>
+</body>
+
+</html>
