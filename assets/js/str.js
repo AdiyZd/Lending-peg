@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let correctAnswer = 0;
     let baseTime = 300;
 
+    submitBtn.disabled = true
+    answerInput.disabled = true
+
+
     // logika tombol start
     startBtn.addEventListener("click", function () {
         level = 1;
@@ -31,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
         progressBar.style.width = '0%';
         levelBadge.textContent = `Level ${level}`;
         scoreDisplay.textContent = score;
+        submitBtn.disabled = false;
+        answerInput.disabled = false;
         startLevel();
     });
 
